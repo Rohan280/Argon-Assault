@@ -38,7 +38,6 @@ public class PlayerControls : MonoBehaviour
         else
         {
             SetLasersActive(false);
-
         }
     }
 

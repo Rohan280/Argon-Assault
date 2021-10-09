@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] ParticleSystem crashVFX;
 
     float levelLoadDelay = 1f;
+
+    void Update()
+    {
+        LoadMenu();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,7 +30,18 @@ public class CollisionHandler : MonoBehaviour
 
     void ReloadLevel()
     {
-        int currentSceneIndex = EditorSceneManager.GetActiveScene().buildIndex;
-        EditorSceneManager.LoadScene(currentSceneIndex);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    void LoadMenu()
+    {
+        
+        if (Time.timeSinceLevelLoad > 32.50f)
+        {
+            
+            SceneManager.LoadScene(2);
+            
+        }
     }
 }
